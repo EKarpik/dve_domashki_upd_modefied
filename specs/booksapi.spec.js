@@ -29,18 +29,6 @@ describe('Books', () => {
     expect(response.data).toEqual({ books })
   })
 
-  it('Получение информации о конкретной книге', async () => {
-    const responseGetBook = await BookService.getOne({ isbn: isbnOne, token })
-    console.log('запрашиваем инфо об этолй книге', isbnOne)
-    console.log(
-      'стутс код ответа информация о книге',
-      responseGetBook.status,
-      'информация о книге',
-      responseGetBook.data
-    )
-    expect(responseGetBook.status).toBe(200)
-  })
-
   it('Удаление всех книг из коллекции пользователя', async () => {
     const responseRemoveAll = await UserBookService.removeAll({ userId, token })
     console.log('тело ответа после удаления всех книг', responseRemoveAll.data)
@@ -59,6 +47,18 @@ describe('Books', () => {
     })
     expect(response.status).toBe(201)
     expect(response.data).toEqual({ books: [{ isbn: isbnOne }] })
+  })
+
+  it('Получение информации о конкретной книге', async () => {
+    const responseGetBook = await BookService.getOne({ isbn: isbnOne, token })
+    console.log('запрашиваем инфо об этолй книге', isbnOne)
+    console.log(
+        'стутс код ответа информация о книге',
+        responseGetBook.status,
+        'информация о книге',
+        responseGetBook.data
+    )
+    expect(responseGetBook.status).toBe(200)
   })
 
   it('Замена книги в коллекции к пользователя', async () => {
