@@ -51,6 +51,6 @@ describe('Users', () => {
     console.log('удаляем userid', userId)
     console.log(delresponse.status)
     console.log('текст сообщения в теле ответа', delresponse.body)
-    expect(delresponse.status).toBe(204)
+    expect(delresponse.status).toBe(204)//руками вызвала getuser, он отвечает. затем вызвала deluser возращает статус код 204, после чего дернула getuser и он отвечает, что юзер не найден 
   })
 })
