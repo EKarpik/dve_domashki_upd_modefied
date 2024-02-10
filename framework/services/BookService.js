@@ -28,7 +28,7 @@ const replaceBook = async ({ isbn1, userId, isbn2, token }) => {
     .set('Authorization', `Bearer ${token}`)
     .send({
       userId,
-      isbn2
+      isbn: isbn2
     })
   return {
     headers: response.headers,
@@ -40,7 +40,7 @@ const replaceBook = async ({ isbn1, userId, isbn2, token }) => {
 const addListOfBooks = async ({ userId, isbns, token }) => {
   const payload = {
     userId,
-    collectionOfIsbns: isbns.map(isbn => ({isbn}))
+    collectionOfIsbns: isbns.map(isbn => ({ isbn }))
   }
 
   const response = await supertest(config.url)
